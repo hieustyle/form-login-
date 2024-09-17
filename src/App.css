@@ -375,9 +375,7 @@ select:focus {
   background-color: #0056b3; 
 }
 
-input::placeholder {
-  padding-left: 20px; 
-}
+
 .bi-facebook {
   width: 40px;
   height: 40px;
@@ -399,4 +397,17 @@ input::placeholder {
 }
 .signup-container select{
   margin-bottom: 20px;
+}
+input[type="text"]{
+  padding-left: 30px;
+}
+input[type="password"]{
+  padding-left: 30px;
+}
+.bi-eye-slash{
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }

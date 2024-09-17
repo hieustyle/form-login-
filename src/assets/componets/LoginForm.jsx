@@ -12,6 +12,7 @@ const LoginForm = () => {
   const [isBlurred, setIsBlurred] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -70,6 +71,10 @@ const LoginForm = () => {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div
       className={`login-container ${isBlurred ? "blurred" : ""} ${
@@ -98,10 +103,11 @@ const LoginForm = () => {
           }
           onMouseLeave={() => setUsernameError("")}
         />
+
         {usernameError && (
           <div
             className="error-message"
-            style={{ color: "red", fontSize: "12px" }}
+            style={{ color: "red", fontSize: "12px", marginTop: "5px" }}
           >
             {usernameError}
           </div>
@@ -119,7 +125,7 @@ const LoginForm = () => {
           <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1" />
         </svg>
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           placeholder="Type your password"
           value={password}
           onChange={handlePasswordChange}
@@ -128,6 +134,12 @@ const LoginForm = () => {
           }
           onMouseLeave={() => setPasswordError("")}
         />
+        <a href="###" onClick={togglePasswordVisibility}>
+          {" "}
+          <i
+            className={`bi ${showPassword ? "bi-eye" : "bi-eye-slash"}`}
+          ></i>{" "}
+        </a>
         {passwordError && (
           <div
             className="error-message"
@@ -137,6 +149,7 @@ const LoginForm = () => {
           </div>
         )}
       </div>
+
       <a
         href=""
         className="forgot-password"
